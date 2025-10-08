@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flex Center</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+}
+.center {
+  display: flex;                  /* Contenedor --> flexbox. */
+  justify-content: center;        /* Centra horizontalmente los elementos. */
+  align-items: center;            /* Centra verticalmente los elementos. */
+  height: 100%;                   /* Ocupa todo el alto de la pantalla. */
+  background: #fafafa;          /* Fondo. */
+}
+.box {
+  padding: 2rem;                  /* Espacio para que el texto no quede pegado al borde. */
+  border: 1px solid #ccc;       /* Borde gris. */
+  background: #fff;             /* Fondo blanco dentro de la caja. */
+}
+</style>
+</head>
+<body>
+<div class="center">
+<div class="box">Centered!</div>
+</div>
+</body>
+</html>
