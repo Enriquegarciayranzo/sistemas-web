@@ -1,5 +1,5 @@
     html {
-      scroll-behavior: smooth; /* Cuando pinchas en el header en alguna caja, te llevaba lentamente en vez de directamente */
+      scroll-behavior: smooth; 
     }
 
     body {
