@@ -335,6 +335,7 @@
 
     .project-card.reverse .project-content {
       grid-column: 1;
+      order: -1; 
     }
 
     .badges {
