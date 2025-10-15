@@ -1,5 +1,5 @@
     html {
-      scroll-behavior: smooth; 
+      scroll-behavior: smooth;
     }
 
     body {
@@ -58,7 +58,7 @@
     .site-header a {
       text-decoration: none;
     }
- 
+
     .theme-toggle {
       width: auto;
       height: auto;
@@ -69,7 +69,7 @@
       justify-content: center;
       padding: 0;
     }
-    
+
     .download-btn {
       background: #0f172a;
       color: #fff;
@@ -87,7 +87,7 @@
       justify-content: space-between;
     }
 
-    
+
     .hero-text h1 {
       margin: 0 0 12px;
       font-size: 56px;
@@ -294,7 +294,7 @@
 
     .project-card {
       max-width: 1152px;
-      margin: 0 auto 40px; 
+      margin: 0 auto 40px;
       border-radius: 16px;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -311,9 +311,9 @@
     }
 
     .project-media img {
-      width: 480px;         
-      height: 384px;        
-      border-radius: 16px;  
+      width: 480px;
+      height: 384px;
+      border-radius: 16px;
     }
 
     .project-content {
@@ -359,7 +359,7 @@
     .project-links svg {
       width: 18px;
       height: 18px;
-      color: #0f172a;    
+      color: #0f172a;
     }
 
     /* ======= TESTIMONIALS ======= */
@@ -408,14 +408,14 @@
     .testimonial-photo {
       width: 80px;
       height: 80px;
-      border-radius: 50%;       
-      margin: 0 auto 16px;      
-      display: block;           
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      display: block;
     }
 
     .testimonial-author {
       margin-top: 16px;
-      margin-bottom: 8px;  
+      margin-bottom: 8px;
       font-weight: bold;
       font-size: 16px;
       color: #0f172a;
@@ -460,7 +460,7 @@
     }
 
     .contact-sub {
-      color: #374151;          
+      color: #374151;
     }
 
     .contact-social {
@@ -492,12 +492,280 @@
       scroll-margin-top: 84px;
     }
 
-/* ======= BASE para el botón (oculto en desktop) ======= */
-.menu-toggle{
-  display: none;
-  border: 0;
-  background: transparent;
-  padding: 4px;
-  align-items: center;
-  justify-content: center;
-}
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      padding: 4px;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    /* VERSION MOVIL */
+    @media (max-width: 768px) {
+      body {
+        background: #f3f5fa;
+      }
+
+      .card {
+        background: #fff;
+      }
+
+      .site-header .container,
+      .hero-section,
+      .about-section,
+      .skills-section,
+      .experience-section,
+      .projects-section,
+      .testimonials-section,
+      .contact-section {
+        padding: 24px 16px;
+      }
+
+      /* HEADER */
+      .site-header .container {
+        height: 56px;
+        padding: 0 16px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .theme-toggle {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .header-actions {
+        padding-left: 0;
+      }
+
+      .download-btn {
+        display: none;
+      }
+
+      /* HERO */
+      .hero-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+      }
+
+      .hero-photo {
+        order: -1;
+      }
+
+      .hero-text {
+        text-align: left;
+      }
+
+      .hero-info {
+        font-size: 14px;
+      }
+
+      .social-icons {
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      .social-icons img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .hero-photo img {
+        width: 180px;
+        height: auto;
+        box-shadow: -16px 16px 0 #e5e7eb, 16px 16px 0 #e5e7eb, 16px 16px 0 #e5e7eb;
+      }
+
+      /* ABOUT */
+      .about-tag {
+        margin-bottom: 16px;
+      }
+
+      .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .about-photo {
+        justify-content: center;
+      }
+
+      .about-photo img {
+        width: 220px;
+        max-width: 80%;
+        box-shadow: -16px 16px 0 #e5e7eb, 16px 16px 0 #e5e7eb, 16px 16px 0 #e5e7eb;
+      }
+
+      .about-text {
+        max-width: 100%;
+        margin-top: 20px;
+      }
+
+      .about-text h2 {
+        font-size: 20px;
+        margin: 0 0 8px;
+      }
+
+      /* SKILLS */
+      .skills-content h2 {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px 12px;
+        justify-items: center;
+      }
+
+      .skill-item {
+        width: 90px;
+      }
+
+      .skill-item img {
+        max-width: 48px;
+      }
+
+      /* EXPERIENCE */
+      .experience-section {
+        padding: 60px 24px;
+        text-align: left;
+      }
+
+      .experience-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .experience-item {
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .exp-logo img {
+        width: 90px;
+        height: auto;
+      }
+
+      .exp-title {
+        font-size: 16px;
+      }
+
+      .experience-item ul {
+        margin: 8px 0 0 20px;
+        color: #475569;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .experience-date {
+        font-size: 14px;
+      }
+
+      .experience-tag {
+        text-align: center;
+      }
+
+      /* PROJECTS */
+      .project-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+      }
+
+      .project-media {
+        padding: 12px;
+      }
+
+      .project-media img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+
+      .project-content {
+        padding: 16px;
+      }
+
+      .project-content h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .project-content p {
+        font-size: 14px;
+      }
+
+      .badges {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .badge {
+        font-size: 11px;
+        padding: 4px 8px;
+      }
+
+      .project-card.reverse .project-media,
+      .project-card.reverse .project-content {
+        grid-column: auto;
+      }
+
+      /* TESTIMONIAL */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      .testimonial-item {
+        padding: 16px;
+      }
+
+      .testimonial-photo {
+        width: 72px;
+        height: 72px;
+      }
+
+      /* CONTACT */
+      .contact-intro {
+        max-width: 420px;
+        margin: 12px auto 20px;
+      }
+
+      .contact-info {
+        font-size: 16px;
+      }
+
+      .contact-social {
+        gap: 16px;
+      }
+
+      .contact-social img {
+        width: 24px;
+        height: 24px;
+      }
+
+      :is(#about, #projects, #testimonials, #contact) {
+        scroll-margin-top: 68px;
+      }
+    }
