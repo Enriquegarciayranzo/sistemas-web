@@ -1,7 +1,9 @@
+    /* Baja lentamente cuando pulsas los enlaces del menú */
     html {
       scroll-behavior: smooth;
     }
 
+    /* Estilos predeterminados de la página: letra, colores y fondo */
     body {
       margin: 0;
       font-family: Arial;
@@ -9,15 +11,18 @@
       color: #0f172a;
     }
 
+    /* Tarjeta principal (fondo blanco) */
     .card {
       background: #fff;
     }
 
     /* ======= HEADER ======= */
+    /* Cabecera (fondo blanco) */
     .site-header {
       background: #fff;
     }
 
+    /* Contenedor del header */
     .site-header .container {
       height: 68px;
       padding: 0 80px;
@@ -26,27 +31,32 @@
       justify-content: space-between;
     }
 
+    /* Logo header más grande y en negrita */
     .brand {
       font-weight: 700;
       font-size: 26px;
     }
 
+    /* Bloque derecho: menú + botones */
     .right-cluster {
       display: flex;
       align-items: center;
       gap: 22px;
     }
 
+    /* Menú de navegación en fila con hueco entre enlaces */
     .nav {
       display: flex;
       gap: 22px;
     }
 
+    /* Enlaces del menú */
     .nav a {
       text-decoration: none;
       color: #334155;
     }
 
+    /* Botones del header */
     .header-actions {
       display: flex;
       align-items: center;
@@ -55,10 +65,12 @@
       border-left: 1px solid #e5e7eb;
     }
 
+    /* Quita subrayado a DOWNLOAD CV */
     .site-header a {
       text-decoration: none;
     }
 
+    /* Sol */
     .theme-toggle {
       width: auto;
       height: auto;
@@ -70,6 +82,7 @@
       padding: 0;
     }
 
+    /* Botón Download CV */
     .download-btn {
       background: #0f172a;
       color: #fff;
@@ -80,6 +93,7 @@
     }
 
     /* ======= HERO ======= */
+    /* Sección principal */
     .hero-section {
       padding: 96px 80px;
       display: flex;
@@ -87,28 +101,32 @@
       justify-content: space-between;
     }
 
-
+    /* Título grande */
     .hero-text h1 {
       margin: 0 0 12px;
       font-size: 56px;
     }
 
+    /* Texto informativo */
     .hero-info {
       margin-top: 16px;
       font-size: 15px;
       color: #334155;
     }
 
+    /* Iconos redes sociales */
     .social-icons {
       display: flex;
       gap: 16px;
     }
 
+    /* Tamaño de los iconos redes sociales */
     .social-icons img {
       width: 20px;
       height: 20px;
     }
 
+    /* Foto */
     .hero-photo img {
       width: 240px;
       height: auto;
@@ -116,16 +134,19 @@
     }
 
     /* ======= ABOUT ======= */
+    /* Sección principal */
     .about-section {
       background: #f5f5f5;
       padding: 96px 80px;
     }
 
+    /* About me */
     .about-tag {
       text-align: center;
       margin-bottom: 30px;
     }
 
+    /* Etiqueta About me */
     .about-tag span {
       background: #e5e7eb;
       color: #374151;
@@ -135,6 +156,7 @@
       font-weight: bold;
     }
 
+    /* Contenido de About */
     .about-content {
       display: flex;
       align-items: flex-start;
@@ -142,21 +164,25 @@
       gap: 80px;
     }
 
+    /* Foto */
     .about-photo {
       flex: 1;
       display: flex;
       justify-content: center;
     }
 
+    /* Tamaño y sombra de la foto */
     .about-photo img {
       width: 280px;
       box-shadow: -24px 20px 0 #ddd;
     }
 
+    /* Ancho máximo del texto */
     .about-text {
       max-width: 650px;
     }
 
+    /* Título de About */
     .about-text h2 {
       margin-top: 0;
       font-size: 26px;
@@ -164,15 +190,18 @@
     }
 
     /* ======= SKILLS ======= */
+    /* Sección principal */
     .skills-section {
       padding: 60px 80px;
       text-align: center;
     }
 
+    /* Separacion entre tag y texto */
     .skills-tag {
       margin-bottom: 20px;
     }
 
+    /* Etiqueta Skills */
     .skills-tag span {
       background: #e5e7eb;
       color: #374151;
@@ -182,6 +211,7 @@
       font-weight: bold;
     }
 
+    /* Subtítulo */
     .skills-content h2 {
       margin: 0 auto 40px;
       font-size: 18px;
@@ -189,6 +219,7 @@
       font-weight: normal;
     }
 
+    /* Grid 4 filas iguales */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -196,6 +227,7 @@
       justify-items: center;
     }
 
+    /* Flex para que este la imagen y el texto centrados */
     .skill-item {
       display: flex;
       flex-direction: column;
@@ -203,11 +235,13 @@
       width: 100px;
     }
 
+    /* Tamaño de la imagen */
     .skill-item img {
       max-width: 60px;
       margin-bottom: 10px;
     }
-
+   
+    /* Texto de la imagen */
     .skill-item p {
       font-size: 14px;
       color: #374151;
@@ -215,16 +249,19 @@
     }
 
     /* ======= EXPERIENCE ======= */
+    /* Sección principal */
     .experience-section {
       background: #f5f5f5;
       padding: 60px 80px;
       text-align: center;
     }
 
+    /* Separacion entre tag y texto */
     .experience-tag {
       margin-bottom: 20px;
     }
 
+    /* Etiqueta Experience */
     .experience-tag span {
       background: #e5e7eb;
       color: #374151;
@@ -234,6 +271,7 @@
       font-weight: bold;
     }
 
+    /* Contenedor de las tarjetas */
     .experience-content {
       max-width: 896px;
       margin: 0 auto;
@@ -242,6 +280,7 @@
       gap: 22px;
     }
 
+    /* Tarjeta: grid con logo, texto y fecha */
     .experience-item {
       background: #fff;
       padding: 24px;
@@ -252,32 +291,38 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     }
 
+    /* Tamaño de la imagen */
     .exp-logo img {
       width: 56px;
       height: 56px;
     }
 
+    /* Título de la imagen */
     .exp-title {
       margin: 0 0 8px;
     }
 
+    /* Lista de texto */
     .experience-item ul {
       margin: 0;
       padding-left: 0;
       list-style-position: inside;
     }
 
+    /* Fecha */
     .experience-date {
       font-size: 14px;
       color: #555;
     }
 
     /* ======= PROJECTS ======= */
+    /* Seccion principal */
     .projects-section {
       padding: 60px 80px;
       text-align: center;
     }
 
+    /* Etiqueta Projects */
     .projects-tag span {
       background: #e5e7eb;
       color: #374151;
@@ -287,11 +332,13 @@
       font-weight: bold;
     }
 
+    /* Intro de proyectos */
     .projects-intro {
       margin: 14px 0 40px;
       color: #374151;
     }
 
+    /* Tarjeta de proyecto */
     .project-card {
       max-width: 1152px;
       margin: 0 auto 40px;
@@ -302,6 +349,7 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     }
 
+    /* Imagen */
     .project-media {
       background: #f5f5f5;
       padding: 20px;
@@ -310,40 +358,48 @@
       justify-content: center;
     }
 
+    /* Tamaño y bordes de la imagen */
     .project-media img {
       width: 480px;
       height: 384px;
       border-radius: 16px;
     }
 
+    /* Texto */
     .project-content {
       padding: 24px;
       text-align: left;
     }
 
+    /* Título del proyecto */
     .project-content h3 {
       margin: 0 0 10px;
     }
 
+    /* Párrafo del proyecto */
     .project-content p {
       color: #475569;
     }
 
+    /* En la tarjeta reverse mueve la imagen a la columna 2 */
     .project-card.reverse .project-media {
       grid-column: 2;
     }
 
+    /* En la tarjeta reverse coloca el texto en la columna 1 */
     .project-card.reverse .project-content {
       grid-column: 1;
-      order: -1; 
+      order: -1;
     }
 
+    /* Contenedor de badges del proyecto */
     .badges {
       display: flex;
       gap: 8px;
       margin: 10px 0 16px;
     }
 
+    /* Forma de cada badge */
     .badge {
       background: #e5e7eb;
       color: #374151;
@@ -352,11 +408,13 @@
       border-radius: 999px;
     }
 
+    /* Enlaces */
     .project-links {
       display: flex;
       gap: 12px;
     }
 
+    /* Tamaño de los enlaces */
     .project-links svg {
       width: 18px;
       height: 18px;
@@ -364,12 +422,14 @@
     }
 
     /* ======= TESTIMONIALS ======= */
+    /* Sección principal */
     .testimonials-section {
       background: #f5f5f5;
       padding: 60px 80px;
       text-align: center;
     }
 
+    /* Etiqueta Testimonials */
     .testimonials-tag span {
       background: #e5e7eb;
       color: #374151;
@@ -378,12 +438,14 @@
       font-size: 14px;
       font-weight: bold;
     }
-
+  
+    /* Texto de la sección */
     .testimonials-intro {
       margin: 20px 0 40px;
       color: #374151;
     }
 
+    /* Grid 3 columnas */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -392,6 +454,7 @@
       margin: 0 auto;
     }
 
+    /* Tarjeta de cada testimonio*/
     .testimonial-item {
       background: #fff;
       border-radius: 16px;
@@ -400,12 +463,14 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     }
 
+    /* Texto del testimonio */
     .testimonial-item p {
       color: #374151;
       line-height: 1.5;
       margin: 0 0 14px;
     }
 
+    /* Foto del testimonio */
     .testimonial-photo {
       width: 80px;
       height: 80px;
@@ -414,6 +479,7 @@
       display: block;
     }
 
+    /* Autor del testimonio */
     .testimonial-author {
       margin-top: 16px;
       margin-bottom: 8px;
@@ -423,6 +489,7 @@
       text-align: center;
     }
 
+    /* Rol del testimonio */
     .testimonial-role {
       font-size: 14px;
       color: #666;
@@ -430,11 +497,13 @@
     }
 
     /* ======= CONTACT ======= */
+    /* Sección principal */
     .contact-section {
       padding: 60px 80px;
       text-align: center;
     }
 
+    /* Etiqueta Contact */
     .contact-tag span {
       background: #e5e7eb;
       color: #374151;
@@ -444,32 +513,38 @@
       font-weight: bold;
     }
 
+    /* Texto contacto */
     .contact-intro {
       max-width: 440px;
       margin: 20px auto 30px;
       color: #374151;
     }
 
+    /* Tamaño del texto */
     .contact-info {
       font-size: 18px;
     }
 
+    /* Enlaces de contacto */
     .contact-info a {
       text-decoration: none;
       color: #0f172a;
       font-weight: bold;
     }
 
+    /* Color del texto de abajo */
     .contact-sub {
       color: #374151;
     }
 
+    /* Iconos de redes sociales */
     .contact-social {
       display: flex;
       justify-content: center;
       gap: 20px;
     }
 
+    /* Tamaño de iconos de redes sociales */
     .contact-social img {
       width: 26px;
       height: 26px;
@@ -477,6 +552,7 @@
 
 
     /* ======= FOOTER ======= */
+    /* Pie de página */
     .footer {
       background: #f5f5f5;
       text-align: center;
@@ -485,14 +561,17 @@
       color: #374151;
     }
 
+    /* Quita márgenes del párrafo del footer */
     .footer p {
       margin: 0;
     }
 
+    /* Hace que el header este anlado arriba */
     :is(#about, #projects, #testimonials, #contact) {
       scroll-margin-top: 84px;
     }
 
+    /* Tres rallitas (solo version movil) */
     .menu-toggle {
       display: none;
       border: 0;
@@ -509,10 +588,12 @@
         background: #f3f5fa;
       }
 
+      /* Contenedor principal */
       .card {
         background: #fff;
       }
 
+      /* Padding más pequeño */
       .site-header .container,
       .hero-section,
       .about-section,
@@ -525,34 +606,41 @@
       }
 
       /* HEADER */
+      /* Header y padding más pequeño */
       .site-header .container {
         height: 56px;
         padding: 0 16px;
       }
 
+      /* Oculta el menú de enlaces */
       .nav {
         display: none;
       }
 
+      /* Oculta el sol */
       .theme-toggle {
         display: none;
       }
 
+       /* Muestra tres rallitas */
       .menu-toggle {
         display: flex;
         font-size: 22px;
         line-height: 1;
       }
 
+      /* Quita separación */
       .header-actions {
         padding-left: 0;
       }
 
+      /* Oculta el botón de descargar CV */
       .download-btn {
         display: none;
       }
 
       /* HERO */
+      /* HERO en columna */
       .hero-section {
         display: flex;
         flex-direction: column;
@@ -560,28 +648,34 @@
         gap: 35px;
       }
 
+      /* Foto arriba */
       .hero-photo {
         order: -1;
       }
 
+      /* Texto a la izquierda */
       .hero-text {
         text-align: left;
       }
 
+      /* Texto mas pequeño */
       .hero-info {
         font-size: 14px;
       }
 
+      /* Iconos redes sociales más juntos */
       .social-icons {
         gap: 12px;
         margin-top: 8px;
       }
 
+      /* Iconos redes sociales más pequeños */
       .social-icons img {
         width: 18px;
         height: 18px;
       }
 
+       /* Foto más pequeña */
       .hero-photo img {
         width: 180px;
         height: auto;
@@ -589,10 +683,12 @@
       }
 
       /* ABOUT */
+      /* Menos margen */
       .about-tag {
         margin-bottom: 16px;
       }
 
+      /* About en columna */
       .about-content {
         display: flex;
         flex-direction: column;
@@ -600,32 +696,38 @@
         align-items: center;
       }
 
+      /* Foto centrada */
       .about-photo {
         justify-content: center;
       }
 
+      /* Foto mas pequeña */
       .about-photo img {
         width: 220px;
         max-width: 80%;
         box-shadow: -16px 16px 0 #e5e7eb, 16px 16px 0 #e5e7eb, 16px 16px 0 #e5e7eb;
       }
 
+      /* Texto con ancho de un movil */
       .about-text {
         max-width: 100%;
         margin-top: 20px;
       }
 
+      /* Texto mas pequeño */
       .about-text h2 {
         font-size: 20px;
         margin: 0 0 8px;
       }
 
       /* SKILLS */
+      /* Texto mas pequeño */
       .skills-content h2 {
         font-size: 16px;
         margin-bottom: 20px;
       }
 
+      /* Grid 3 columnas  */
       .skills-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -633,40 +735,48 @@
         justify-items: center;
       }
 
+      /* Cada skill mas estrecha */
       .skill-item {
         width: 90px;
       }
 
+      /* Imagen mas pequeña */
       .skill-item img {
         max-width: 48px;
       }
 
       /* EXPERIENCE */
+      /* Padding y texto a la izquiera  */
       .experience-section {
         padding: 60px 24px;
         text-align: left;
       }
 
+      /* Flex en columna */
       .experience-content {
         display: flex;
         flex-direction: column;
       }
 
+      /* Tarjetas de experiencias */
       .experience-item {
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
         display: flex;
         flex-direction: column;
       }
 
+      /* Imagen de experiencia mas pequeña */
       .exp-logo img {
         width: 90px;
         height: auto;
       }
 
+      /* Titulo de experiencia mas pequeño */
       .exp-title {
         font-size: 16px;
       }
 
+      /* Texto de experiencia */
       .experience-item ul {
         margin: 8px 0 0 20px;
         color: #475569;
@@ -674,15 +784,18 @@
         line-height: 1.5;
       }
 
+      /* Fecha de experiencia */
       .experience-date {
         font-size: 14px;
       }
 
+      /* Tag de Experience centrado */
       .experience-tag {
         text-align: center;
       }
 
       /* PROJECTS */
+      /* Grid una columna */
       .project-card {
         display: grid;
         grid-template-columns: 1fr;
@@ -691,45 +804,44 @@
         box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
       }
 
-      .project-media {
-        padding: 12px;
-      }
-
+      /* Imagen del proyecto */
       .project-media img {
         width: 100%;
         height: auto;
         border-radius: 12px;
       }
 
-      .project-content {
-        padding: 16px;
-      }
-
+       /* Título del proyecto mas pequeño */
       .project-content h3 {
         margin: 0 0 8px;
         font-size: 18px;
       }
 
+       /* Texto del proyecto más pequeño */
       .project-content p {
         font-size: 14px;
       }
 
+      /* Badges pasando de linea cuando sea necesario */
       .badges {
         flex-wrap: wrap;
         gap: 6px;
       }
 
+      /* Badge un poco más pequeño */
       .badge {
         font-size: 11px;
         padding: 4px 8px;
       }
 
+      /* Resetea columnas para la tarjeta reverse */
       .project-card.reverse .project-media,
       .project-card.reverse .project-content {
         grid-column: auto;
       }
 
       /* TESTIMONIAL */
+      /* Grid una columna */
       .testimonials-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -738,34 +850,36 @@
         margin: 0 auto;
       }
 
-      .testimonial-item {
-        padding: 16px;
-      }
-
+      /* Imagen testimonio mas pequeña */
       .testimonial-photo {
         width: 72px;
         height: 72px;
       }
 
       /* CONTACT */
+      /* Texto del contacto con menos margen */
       .contact-intro {
         max-width: 420px;
         margin: 12px auto 20px;
       }
 
+      /* Datos más pequeños */
       .contact-info {
         font-size: 16px;
       }
 
+      /* Redes sociales con menos separacion */
       .contact-social {
         gap: 16px;
       }
 
+      /* Iconos de redes sociales más pequeños */
       .contact-social img {
         width: 24px;
         height: 24px;
       }
 
+      /* Hace que el header este anlado arriba */
       :is(#about, #projects, #testimonials, #contact) {
         scroll-margin-top: 68px;
       }
