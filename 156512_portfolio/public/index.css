@@ -1,9 +1,9 @@
-    /* Baja lentamente cuando pulsas los enlaces del menú */
+    /* Baja lentamente cuando pulsas los enlaces del menu */
     html {
       scroll-behavior: smooth;
     }
 
-    /* Estilos predeterminados de la página: letra, colores y fondo */
+    /* Estilos predeterminados de la pagina: letra, colores y fondo */
     body {
       margin: 0;
       font-family: Arial;
@@ -31,26 +31,26 @@
       justify-content: space-between;
     }
 
-    /* Logo header más grande y en negrita */
+    /* Logo header mas grande y en negrita */
     .brand {
       font-weight: 700;
       font-size: 26px;
     }
 
-    /* Bloque derecho: menú + botones */
+    /* Menu y botones */
     .right-cluster {
       display: flex;
       align-items: center;
       gap: 22px;
     }
 
-    /* Menú de navegación en fila con hueco entre enlaces */
+    /* Menu de navegación */
     .nav {
       display: flex;
       gap: 22px;
     }
 
-    /* Enlaces del menú */
+    /* Enlaces del menu */
     .nav a {
       text-decoration: none;
       color: #334155;
@@ -82,7 +82,7 @@
       padding: 0;
     }
 
-    /* Botón Download CV */
+    /* Boton Download CV */
     .download-btn {
       background: #0f172a;
       color: #fff;
@@ -93,7 +93,7 @@
     }
 
     /* ======= HERO ======= */
-    /* Sección principal */
+    /* Seccion principal */
     .hero-section {
       padding: 96px 80px;
       display: flex;
@@ -101,7 +101,7 @@
       justify-content: space-between;
     }
 
-    /* Título grande */
+    /* Titulo Hero */
     .hero-text h1 {
       margin: 0 0 12px;
       font-size: 56px;
@@ -126,7 +126,7 @@
       height: 20px;
     }
 
-    /* Foto */
+    /* Foto hero */
     .hero-photo img {
       width: 240px;
       height: auto;
@@ -134,7 +134,7 @@
     }
 
     /* ======= ABOUT ======= */
-    /* Sección principal */
+    /* Seccion principal */
     .about-section {
       background: #f5f5f5;
       padding: 96px 80px;
@@ -164,7 +164,7 @@
       gap: 80px;
     }
 
-    /* Foto */
+    /* Foto About */
     .about-photo {
       flex: 1;
       display: flex;
@@ -177,12 +177,12 @@
       box-shadow: -24px 20px 0 #ddd;
     }
 
-    /* Ancho máximo del texto */
+    /* Ancho maximo del texto */
     .about-text {
       max-width: 650px;
     }
 
-    /* Título de About */
+    /* Titulo de About */
     .about-text h2 {
       margin-top: 0;
       font-size: 26px;
@@ -190,7 +190,7 @@
     }
 
     /* ======= SKILLS ======= */
-    /* Sección principal */
+    /* Seccion principal */
     .skills-section {
       padding: 60px 80px;
       text-align: center;
@@ -211,7 +211,7 @@
       font-weight: bold;
     }
 
-    /* Subtítulo */
+    /* Subtitulo */
     .skills-content h2 {
       margin: 0 auto 40px;
       font-size: 18px;
@@ -219,7 +219,7 @@
       font-weight: normal;
     }
 
-    /* Grid 4 filas iguales */
+    /* Grid 4 filas */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -227,7 +227,7 @@
       justify-items: center;
     }
 
-    /* Flex para que este la imagen y el texto centrados */
+    /* Flex para que la imagen y el texto esten centrados */
     .skill-item {
       display: flex;
       flex-direction: column;
@@ -249,7 +249,7 @@
     }
 
     /* ======= EXPERIENCE ======= */
-    /* Sección principal */
+    /* Seccion principal */
     .experience-section {
       background: #f5f5f5;
       padding: 60px 80px;
@@ -280,7 +280,7 @@
       gap: 22px;
     }
 
-    /* Tarjeta: grid con logo, texto y fecha */
+    /* Grid con logo, texto y fecha */
     .experience-item {
       background: #fff;
       padding: 24px;
@@ -297,7 +297,7 @@
       height: 56px;
     }
 
-    /* Título de la imagen */
+    /* Titulo de la imagen */
     .exp-title {
       margin: 0 0 8px;
     }
@@ -332,7 +332,7 @@
       font-weight: bold;
     }
 
-    /* Intro de proyectos */
+    /* Texto de proyectos */
     .projects-intro {
       margin: 14px 0 40px;
       color: #374151;
@@ -349,7 +349,7 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     }
 
-    /* Imagen */
+    /* Imagen de proyectos */
     .project-media {
       background: #f5f5f5;
       padding: 20px;
@@ -365,28 +365,28 @@
       border-radius: 16px;
     }
 
-    /* Texto */
+    /* Texto de proyectos*/
     .project-content {
       padding: 24px;
       text-align: left;
     }
 
-    /* Título del proyecto */
+    /* Titulo del proyecto */
     .project-content h3 {
       margin: 0 0 10px;
     }
 
-    /* Párrafo del proyecto */
+    /* Parrafo del proyecto */
     .project-content p {
       color: #475569;
     }
 
-    /* En la tarjeta reverse mueve la imagen a la columna 2 */
+    /* En la tarjeta reverse se mueve la imagen a la columna 2 */
     .project-card.reverse .project-media {
       grid-column: 2;
     }
 
-    /* En la tarjeta reverse coloca el texto en la columna 1 */
+    /* En la tarjeta reverse se pone el texto en la columna 1 */
     .project-card.reverse .project-content {
       grid-column: 1;
       order: -1;
@@ -408,7 +408,7 @@
       border-radius: 999px;
     }
 
-    /* Enlaces */
+    /* Enlaces del proyecto */
     .project-links {
       display: flex;
       gap: 12px;
@@ -422,7 +422,7 @@
     }
 
     /* ======= TESTIMONIALS ======= */
-    /* Sección principal */
+    /* Seccion principal */
     .testimonials-section {
       background: #f5f5f5;
       padding: 60px 80px;
@@ -454,7 +454,7 @@
       margin: 0 auto;
     }
 
-    /* Tarjeta de cada testimonio*/
+    /* Tarjeta de cada testimonio */
     .testimonial-item {
       background: #fff;
       border-radius: 16px;
@@ -497,7 +497,7 @@
     }
 
     /* ======= CONTACT ======= */
-    /* Sección principal */
+    /* Seccion principal */
     .contact-section {
       padding: 60px 80px;
       text-align: center;
@@ -552,7 +552,7 @@
 
 
     /* ======= FOOTER ======= */
-    /* Pie de página */
+    /* Pie de pagina */
     .footer {
       background: #f5f5f5;
       text-align: center;
@@ -561,7 +561,7 @@
       color: #374151;
     }
 
-    /* Quita márgenes del párrafo del footer */
+    /* Quita margenes del parrafo del footer */
     .footer p {
       margin: 0;
     }
@@ -593,7 +593,7 @@
         background: #fff;
       }
 
-      /* Padding más pequeño */
+      /* Padding mas pequeño */
       .site-header .container,
       .hero-section,
       .about-section,
@@ -606,13 +606,13 @@
       }
 
       /* HEADER */
-      /* Header y padding más pequeño */
+      /* Header y padding mas pequeño */
       .site-header .container {
         height: 56px;
         padding: 0 16px;
       }
 
-      /* Oculta el menú de enlaces */
+      /* Oculta el menu de enlaces */
       .nav {
         display: none;
       }
@@ -629,18 +629,18 @@
         line-height: 1;
       }
 
-      /* Quita separación */
+      /* Quita separacion */
       .header-actions {
         padding-left: 0;
       }
 
-      /* Oculta el botón de descargar CV */
+      /* Oculta el boton de descargar CV */
       .download-btn {
         display: none;
       }
 
       /* HERO */
-      /* HERO en columna */
+      /* Flex columna */
       .hero-section {
         display: flex;
         flex-direction: column;
@@ -663,19 +663,19 @@
         font-size: 14px;
       }
 
-      /* Iconos redes sociales más juntos */
+      /* Iconos redes sociales mas juntos */
       .social-icons {
         gap: 12px;
         margin-top: 8px;
       }
 
-      /* Iconos redes sociales más pequeños */
+      /* Iconos redes sociales mas pequeños */
       .social-icons img {
         width: 18px;
         height: 18px;
       }
 
-       /* Foto más pequeña */
+       /* Foto mas pequeña */
       .hero-photo img {
         width: 180px;
         height: auto;
@@ -778,7 +778,6 @@
 
       /* Texto de experiencia */
       .experience-item ul {
-        margin: 8px 0 0 20px;
         color: #475569;
         font-size: 14px;
         line-height: 1.5;
@@ -811,13 +810,13 @@
         border-radius: 12px;
       }
 
-       /* Título del proyecto mas pequeño */
+       /* Titulo del proyecto mas pequeño */
       .project-content h3 {
         margin: 0 0 8px;
         font-size: 18px;
       }
 
-       /* Texto del proyecto más pequeño */
+       /* Texto del proyecto mas pequeño */
       .project-content p {
         font-size: 14px;
       }
@@ -828,7 +827,7 @@
         gap: 6px;
       }
 
-      /* Badge un poco más pequeño */
+      /* Badge un poco mas pequeño */
       .badge {
         font-size: 11px;
         padding: 4px 8px;
@@ -863,7 +862,7 @@
         margin: 12px auto 20px;
       }
 
-      /* Datos más pequeños */
+      /* Datos mas pequeños */
       .contact-info {
         font-size: 16px;
       }
@@ -873,7 +872,7 @@
         gap: 16px;
       }
 
-      /* Iconos de redes sociales más pequeños */
+      /* Iconos de redes sociales mas pequeños */
       .contact-social img {
         width: 24px;
         height: 24px;
