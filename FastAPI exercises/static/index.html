@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Test API</h1>
+<section id="out">Loading...</section>
+
+<script>
+fetch("/users/")
+  .then(r => r.json())
+  .then(data => {
+      document.querySelector("section").textContent=JSON.stringify(data, null, 2);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+section {
+    background: #eee;
+    padding: 10px;
+    white-space: pre;
+}
