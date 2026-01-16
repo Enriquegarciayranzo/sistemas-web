@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import HeroDetail from "./pages/HeroDetail";
 import CreateHero from "./pages/CreateHero";
 import DeleteHero from "./pages/DeleteHero";
-import UpdateHero from "./pages/UpdateHero";
 
 /**
  * Route configuration for React Router.
@@ -40,10 +39,6 @@ export const routes = [
       {
         path: "delete",
         element: <DeleteHero />,
-      },
-      {
-        path: "update",
-        element: <UpdateHero />,
       },
     ],
   },

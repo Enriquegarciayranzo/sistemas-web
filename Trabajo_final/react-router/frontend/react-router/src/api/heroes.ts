@@ -21,20 +21,6 @@ export async function getHero(heroId: string): Promise<Hero> {
   return response.json();
 }
 
-export async function updateHero(HeroId:number, hero:HeroCreate): Promise<Hero> {
-  const response = await fetch(`${API_BASE_URL}/heroes/${HeroId}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type":"application/json",
-    },
-    body: JSON.stringify(hero)
-  });
-  if (!response.ok) {
-    throw new Error("Failed to create hero");
-  }
-  return response.json();
-}
-
 export async function createHero(hero: HeroCreate): Promise<Hero> {
   const response = await fetch(`${API_BASE_URL}/heroes/`, {
     method: "POST",
