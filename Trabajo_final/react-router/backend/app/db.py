@@ -10,7 +10,10 @@ engine = create_engine(sqlite_url, connect_args=connect_args)
 
 
 def create_db_and_tables():
-    from app.models import hero
+    from app.models.product import Product
+    from app.models import product
+    from app.models import order
+
     SQLModel.metadata.create_all(engine)
 
 

@@ -4,8 +4,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .db import create_db_and_tables
-from .routes import health
+from app.routes import health
 from app.routes import product
+from app.routes import checkout
+from app.routes import orders
 
 
 @asynccontextmanager
@@ -18,7 +20,7 @@ app = FastAPI(lifespan=lifespan)
 # Configure CORS policy.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["http://localhost:5173", "http://localhost:5174","http://localhost:5175"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -27,3 +29,5 @@ app.add_middleware(
 # Register API routers.
 app.include_router(health.router)
 app.include_router(product.router)
+app.include_router(checkout.router)
+app.include_router(orders.router)
