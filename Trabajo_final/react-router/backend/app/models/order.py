@@ -1,32 +1,30 @@
-from typing import Optional
-from sqlmodel import SQLModel, Field
+from __future__ import annotations
+
+from datetime import datetime
+from typing import Optional, List
+
+from sqlmodel import SQLModel, Field, Relationship
+
 
 class Order(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    total: float = 0.0
+
+    # ✅ CLAVE: pedido pertenece a un usuario
+    user_id: int = Field(index=True)
+
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+    items: List["OrderItem"] = Relationship(back_populates="order")
+
 
 class OrderItem(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    order_id: int = Field(index=True)
+
+    order_id: int = Field(foreign_key="order.id", index=True)
     product_id: int = Field(index=True)
-    name: str
+
+    qty: int
     price: float
-    qty: int
-
-class OrderItemCreate(SQLModel):
-    product_id: int
-    qty: int
-
-class OrderCreate(SQLModel):
-    items: list[OrderItemCreate]
-
-class OrderItemPublic(SQLModel):
-    product_id: int
     name: str
-    price: float
-    qty: int
 
-class OrderPublic(SQLModel):
-    id: int
-    total: float
-    items: list[OrderItemPublic]
+    order: Optional[Order] = Relationship(back_populates="items")

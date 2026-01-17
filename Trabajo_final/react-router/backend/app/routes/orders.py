@@ -1,77 +1,88 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import select
+
 from app.dependencies import SessionDep
+from app.auth import get_current_user
+from app.models.user import User
 from app.models.product import Product
-from app.models.order import Order, OrderItem, OrderCreate, OrderPublic, OrderItemPublic
+from app.models.order import Order, OrderItem
 
-router = APIRouter()
+router = APIRouter(prefix="/orders", tags=["orders"])
 
-@router.post("/orders", response_model=OrderPublic)
-def create_order(data: OrderCreate, session: SessionDep):
-    # 1) validar y calcular total
-    total = 0.0
-    products = {}
 
-    for it in data.items:
-        if it.qty <= 0:
-            raise HTTPException(status_code=400, detail="Invalid qty")
+@router.get("")
+@router.get("/")
+def list_my_orders(session: SessionDep, user: User = Depends(get_current_user)):
+    orders = session.exec(
+        select(Order).where(Order.user_id == user.id).order_by(Order.id.desc())
+    ).all()
 
-        p = session.get(Product, it.product_id)
-        if not p:
-            raise HTTPException(status_code=404, detail="Product not found")
-        if p.stock < it.qty:
-            raise HTTPException(status_code=400, detail=f"Not enough stock for {p.name}")
+    # devolvemos también items
+    result = []
+    for o in orders:
+        items = session.exec(
+            select(OrderItem).where(OrderItem.order_id == o.id)
+        ).all()
 
-        products[it.product_id] = p
-        total += p.price * it.qty
+        total = sum(it.price * it.qty for it in items)
+        result.append(
+            {
+                "id": o.id,
+                "created_at": o.created_at,
+                "total": total,
+                "items": [
+                    {
+                        "product_id": it.product_id,
+                        "name": it.name,
+                        "price": it.price,
+                        "qty": it.qty,
+                    }
+                    for it in items
+                ],
+            }
+        )
+    return result
 
-    # 2) crear order
-    order = Order(total=total)
+
+@router.post("")
+@router.post("/")
+def create_order(payload: dict, session: SessionDep, user: User = Depends(get_current_user)):
+    items = payload.get("items", [])
+    if not items:
+        raise HTTPException(status_code=400, detail="No items")
+
+    order = Order(user_id=user.id)
     session.add(order)
     session.commit()
     session.refresh(order)
 
-    # 3) crear items y restar stock
-    items_public: list[OrderItemPublic] = []
+    for it in items:
+        product_id = int(it["product_id"])
+        qty = int(it["qty"])
 
-    for it in data.items:
-        p = products[it.product_id]
-        p.stock -= it.qty
+        product = session.exec(select(Product).where(Product.id == product_id)).first()
+        if not product:
+            raise HTTPException(status_code=404, detail=f"Product {product_id} not found")
+        if qty <= 0:
+            raise HTTPException(status_code=400, detail="qty must be > 0")
+
+        # (opcional) stock
+        if hasattr(product, "stock") and product.stock < qty:
+            raise HTTPException(status_code=400, detail="Not enough stock")
 
         oi = OrderItem(
             order_id=order.id,
-            product_id=p.id,
-            name=p.name,
-            price=p.price,
-            qty=it.qty,
+            product_id=product.id,
+            qty=qty,
+            price=float(product.price),
+            name=str(product.name),
         )
         session.add(oi)
-        session.add(p)
 
-        items_public.append(
-            OrderItemPublic(
-                product_id=p.id,
-                name=p.name,
-                price=p.price,
-                qty=it.qty,
-            )
-        )
+        # (opcional) descontar stock
+        if hasattr(product, "stock"):
+            product.stock -= qty
+            session.add(product)
 
     session.commit()
-
-    return OrderPublic(id=order.id, total=order.total, items=items_public)
-
-@router.get("/orders", response_model=list[OrderPublic])
-def list_orders(session: SessionDep):
-    orders = session.exec(select(Order)).all()
-    result: list[OrderPublic] = []
-
-    for o in orders:
-        items = session.exec(select(OrderItem).where(OrderItem.order_id == o.id)).all()
-        items_pub = [
-            OrderItemPublic(product_id=i.product_id, name=i.name, price=i.price, qty=i.qty)
-            for i in items
-        ]
-        result.append(OrderPublic(id=o.id, total=o.total, items=items_pub))
-
-    return result
+    return {"ok": True, "order_id": order.id}
