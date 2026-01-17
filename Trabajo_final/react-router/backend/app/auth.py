@@ -1,6 +1,5 @@
-from pathlib import Path
-
 from sqlmodel import Session, SQLModel, create_engine
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 sqlite_file_path = BASE_DIR / "database.db"
@@ -11,11 +10,9 @@ engine = create_engine(sqlite_url, connect_args=connect_args)
 
 
 def create_db_and_tables():
-    # IMPORTANTE: estos imports "registran" las tablas en SQLModel.metadata
     from app.models.product import Product
-    from app.models.order import Order, OrderItem  # si tienes Order/OrderItem
-    from app.models.user import User
-    from app.models.cart import CartItem
+    from app.models import product
+    from app.models import order
 
     SQLModel.metadata.create_all(engine)
 

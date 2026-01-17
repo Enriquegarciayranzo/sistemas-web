@@ -8,6 +8,8 @@ from app.routes import health
 from app.routes import product
 from app.routes import checkout
 from app.routes import orders
+from app.routes import auth
+from app.routes import cart
 
 
 @asynccontextmanager
@@ -31,3 +33,5 @@ app.include_router(health.router)
 app.include_router(product.router)
 app.include_router(checkout.router)
 app.include_router(orders.router)
+app.include_router(auth.router)
+app.include_router(cart.router)

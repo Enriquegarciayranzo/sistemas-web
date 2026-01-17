@@ -1,8 +1,11 @@
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
+
 
 export const routes = [
   {
@@ -16,6 +19,14 @@ export const routes = [
       {
         path: "products/:productId",
         element: <ProductDetail />,
+      },
+      {
+        path: "login",
+        element: <Login  />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
       {
         path: "cart",

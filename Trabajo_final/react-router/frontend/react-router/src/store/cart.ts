@@ -1,39 +1,59 @@
-export type CartItem = {
-  productId: number;
-  name: string;
-  price: number;
-  qty: number;
-};
+import {
+  addCartItem,
+  clearCartApi,
+  fetchCart,
+  removeCartItem,
+  updateCartItem,
+  type CartItem,
+} from "../api/cart";
+import { isLoggedIn } from "./auth";
 
 let cart: CartItem[] = [];
 
-export function getCart(): CartItem[] {
+export async function loadCart() {
+  if (!isLoggedIn()) {
+    cart = [];
+    return cart;
+  }
+  cart = await fetchCart();
   return cart;
 }
 
-export function addToCart(item: Omit<CartItem, "qty">, qty: number) {
-  const existing = cart.find((x) => x.productId === item.productId);
-  if (existing) existing.qty += qty;
-  else cart.push({ ...item, qty });
+export function getCart() {
+  return cart;
 }
 
-export function updateQty(productId: number, qty: number) {
-  const item = cart.find((x) => x.productId === productId);
-  if (!item) return;
-  item.qty = qty;
-  if (item.qty <= 0) {
-    cart = cart.filter((x) => x.productId !== productId);
+export async function addToCart(
+  item: { productId: number; name: string; price: number },
+  qty: number
+) {
+  if (!isLoggedIn()) throw new Error("Not logged in");
+  await addCartItem(item.productId, qty);
+  await loadCart();
+}
+
+export async function updateQty(productId: number, qty: number) {
+  if (!isLoggedIn()) throw new Error("Not logged in");
+  if (qty <= 0) {
+    await removeCartItem(productId);
+  } else {
+    await updateCartItem(productId, qty);
   }
+  await loadCart();
 }
 
-export function removeFromCart(productId: number) {
-  cart = cart.filter((x) => x.productId !== productId);
+export async function removeFromCart(productId: number) {
+  if (!isLoggedIn()) throw new Error("Not logged in");
+  await removeCartItem(productId);
+  await loadCart();
 }
 
-export function clearCart() {
-  cart = [];
+export async function clearCart() {
+  if (!isLoggedIn()) throw new Error("Not logged in");
+  await clearCartApi();
+  await loadCart();
 }
 
-export function getTotal(): number {
-  return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+export function getTotal() {
+  return cart.reduce((acc, it) => acc + it.price * it.qty, 0);
 }
