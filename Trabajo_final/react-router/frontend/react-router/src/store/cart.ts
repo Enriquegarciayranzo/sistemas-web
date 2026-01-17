@@ -4,9 +4,17 @@ import {
   fetchCart,
   removeCartItem,
   updateCartItem,
-  type CartItem,
+  type CartItem as ApiCartItem,
 } from "../api/cart";
+import { fetchProducts } from "../api/products";
 import { isLoggedIn } from "./auth";
+
+export type CartItem = {
+  productId: number;
+  qty: number;
+  name: string;
+  price: number;
+};
 
 let cart: CartItem[] = [];
 
@@ -15,7 +23,27 @@ export async function loadCart() {
     cart = [];
     return cart;
   }
-  cart = await fetchCart();
+
+  // 1) items del carrito (solo product_id, qty)
+  const items = (await fetchCart()) as ApiCartItem[];
+
+  // 2) catálogo productos (id, name, price...)
+  const products = await fetchProducts();
+  const byId = new Map(products.map((p: any) => [p.id, p]));
+
+  // 3) merge
+  cart = items
+    .map((it: any) => {
+      const p = byId.get(it.product_id);
+      return {
+        productId: it.product_id,
+        qty: it.qty,
+        name: p?.name ?? `Product #${it.product_id}`,
+        price: p?.price ?? 0,
+      };
+    })
+    .filter((it) => it.qty > 0);
+
   return cart;
 }
 

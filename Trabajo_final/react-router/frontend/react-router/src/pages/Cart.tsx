@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getCart,
+  loadCart,
   updateQty,
   removeFromCart,
   clearCart,
   getTotal,
 } from "../store/cart";
+import { isLoggedIn } from "../store/auth";
 import { createOrder } from "../api/orders";
 
 export default function Cart() {
@@ -15,6 +17,15 @@ export default function Cart() {
   const [_, forceUpdate] = useState(0);
   const [placing, setPlacing] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      if (isLoggedIn()) {
+        await loadCart();                 
+        forceUpdate((x) => x + 1);        
+      }
+    })();
+  }, []);
 
   const cart = getCart();
   const total = getTotal();

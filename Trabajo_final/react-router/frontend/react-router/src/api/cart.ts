@@ -1,34 +1,53 @@
 import { apiFetch } from "./http";
 
 export type CartItem = {
-  productId: number;
-  name: string;
-  price: number;
+  product_id: number;
   qty: number;
+  price?: number;
+  name?: string;
 };
 
-export function fetchCart() {
-  return apiFetch("/cart", { method: "GET" }) as Promise<CartItem[]>;
+// GET /cart
+export async function fetchCart(): Promise<CartItem[]> {
+  return apiFetch("/cart");
 }
 
-export function addCartItem(productId: number, qty: number) {
-  return apiFetch("/cart/add", {
+// POST /cart
+export async function addCartItem(productId: number, qty: number) {
+  return apiFetch("/cart", {
     method: "POST",
-    body: JSON.stringify({ productId, qty }),
+    body: JSON.stringify({
+      product_id: productId,
+      qty,
+    }),
   });
 }
 
-export function updateCartItem(productId: number, qty: number) {
-  return apiFetch("/cart/update", {
-    method: "PATCH",
-    body: JSON.stringify({ productId, qty }),
+// PUT /cart  (usamos POST porque tu backend hace upsert)
+export async function updateCartItem(productId: number, qty: number) {
+  return apiFetch("/cart", {
+    method: "POST",
+    body: JSON.stringify({
+      product_id: productId,
+      qty,
+    }),
   });
 }
 
-export function removeCartItem(productId: number) {
-  return apiFetch(`/cart/${productId}`, { method: "DELETE" });
+// DELETE /cart
+export async function clearCartApi() {
+  return apiFetch("/cart", {
+    method: "DELETE",
+  });
 }
 
-export function clearCartApi() {
-  return apiFetch("/cart/clear", { method: "POST" });
+// DELETE item concreto (opcional)
+export async function removeCartItem(productId: number) {
+  return apiFetch("/cart", {
+    method: "POST",
+    body: JSON.stringify({
+      product_id: productId,
+      qty: 0,
+    }),
+  });
 }

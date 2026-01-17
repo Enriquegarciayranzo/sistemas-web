@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { addToCart } from "../store/cart";
+import { apiFetch } from "../api/http";
 
 type Product = {
   id: number;
@@ -12,15 +13,27 @@ type Product = {
 
 export default function ProductDetail() {
   const { productId } = useParams();
+  const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8001/products/${productId}`)
-      .then((res) => res.json())
-      .then(setProduct);
+    if (!productId) return;
+
+    apiFetch(`/products/${productId}`)
+      .then((p) => {
+        setProduct(p);
+        setQty(1);
+        setAdded(false);
+        setError("");
+      })
+      .catch(() => {
+        setProduct(null);
+        setError("Error loading product");
+      });
   }, [productId]);
 
   if (!product) return <p>Loading...</p>;
@@ -29,8 +42,14 @@ export default function ProductDetail() {
     <div style={{ padding: 20 }}>
       <h1>{product.name}</h1>
       <p>{product.description}</p>
-      <p><strong>Price:</strong> {product.price} €</p>
-      <p><strong>Stock:</strong> {product.stock}</p>
+      <p>
+        <strong>Price:</strong> {product.price} €
+      </p>
+      <p>
+        <strong>Stock:</strong> {product.stock}
+      </p>
+
+      {error && <p style={{ color: "crimson" }}>{error}</p>}
 
       <div style={{ marginTop: 16 }}>
         <label>
@@ -54,26 +73,29 @@ export default function ProductDetail() {
             borderRadius: 6,
             cursor: "pointer",
           }}
-          onClick={() => {
-            addToCart(
-              {
-                productId: product.id,
-                name: product.name,
-                price: product.price,
-              },
-              qty
-            );
-            setAdded(true);
+          onClick={async () => {
+            try {
+              setError("");
+              await addToCart(
+                {
+                  productId: product.id,
+                  name: product.name,
+                  price: product.price,
+                },
+                qty
+              );
+              setAdded(true);
+              // opcional pero recomendable:
+              navigate("/cart");
+            } catch (e: any) {
+              setError(e?.message || "Could not add to cart");
+            }
           }}
         >
           Add to cart
         </button>
 
-        {added && (
-          <p style={{ color: "green", marginTop: 8 }}>
-            Added to cart ✓
-          </p>
-        )}
+        {added && <p style={{ color: "green", marginTop: 8 }}>Added to cart ✓</p>}
       </div>
     </div>
   );
