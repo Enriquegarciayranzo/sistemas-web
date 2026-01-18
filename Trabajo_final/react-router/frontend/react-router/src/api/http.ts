@@ -1,6 +1,11 @@
 import { getToken } from "../store/auth";
 
-export const API_BASE = "http://127.0.0.1:8000";
+export const API_BASE =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:8000"
+    : import.meta.env.VITE_API_BASE_URL;
+
+if (!API_BASE) throw new Error("VITE_API_BASE_URL is not defined");
 
 export async function apiFetch(path: string, options: RequestInit = {}) {
   const token = getToken();
@@ -19,8 +24,6 @@ export async function apiFetch(path: string, options: RequestInit = {}) {
     throw new Error(text || `HTTP ${res.status}`);
   }
 
-  // 204 no content
   if (res.status === 204) return null;
-
   return res.json();
 }
