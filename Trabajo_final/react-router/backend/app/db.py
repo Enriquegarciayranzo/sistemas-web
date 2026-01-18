@@ -1,9 +1,11 @@
 from pathlib import Path
+import tempfile
 
 from sqlmodel import Session, SQLModel, create_engine
 
-BASE_DIR = Path(__file__).resolve().parent
-sqlite_file_path = BASE_DIR / "database.db"
+# BD en carpeta temporal de Windows (no OneDrive) -> evita bloqueos
+tmp_dir = Path(tempfile.gettempdir())
+sqlite_file_path = tmp_dir / "sistemasweb_database.db"
 sqlite_url = f"sqlite:///{sqlite_file_path}"
 
 connect_args = {"check_same_thread": False}
@@ -11,9 +13,9 @@ engine = create_engine(sqlite_url, connect_args=connect_args)
 
 
 def create_db_and_tables():
-    # IMPORTANTE: estos imports "registran" las tablas en SQLModel.metadata
+    # IMPORTANTE: registrar modelos
     from app.models.product import Product
-    from app.models.order import Order, OrderItem  # si tienes Order/OrderItem
+    from app.models.order import Order, OrderItem
     from app.models.user import User
     from app.models.cart import CartItem
 

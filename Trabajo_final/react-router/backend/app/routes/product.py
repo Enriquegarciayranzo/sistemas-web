@@ -1,5 +1,6 @@
 import logging
 from typing import Annotated
+
 from fastapi import APIRouter, HTTPException, Query
 from sqlmodel import select
 

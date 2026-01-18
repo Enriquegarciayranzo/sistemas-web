@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .db import create_db_and_tables
+from app.db import create_db_and_tables
 from app.routes import health
 from app.routes import product
 from app.routes import checkout
