@@ -12,7 +12,7 @@ type Product = {
 };
 
 export default function ProductDetail() {
-  const { productId } = useParams();
+  const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product | null>(null);
@@ -23,7 +23,7 @@ export default function ProductDetail() {
   useEffect(() => {
     if (!productId) return;
 
-    apiFetch(`/products/${productId}`)
+    apiFetch<Product>(`/products/${productId}`)
       .then((p) => {
         setProduct(p);
         setQty(1);
@@ -41,10 +41,13 @@ export default function ProductDetail() {
   return (
     <div style={{ padding: 20 }}>
       <h1>{product.name}</h1>
+
       <p>{product.description}</p>
+
       <p>
         <strong>Price:</strong> {product.price} €
       </p>
+
       <p>
         <strong>Stock:</strong> {product.stock}
       </p>
@@ -85,17 +88,20 @@ export default function ProductDetail() {
                 qty
               );
               setAdded(true);
-              // opcional pero recomendable:
               navigate("/cart");
             } catch (e: any) {
-              setError(e?.message || "Could not add to cart");
+              setError(e?.message ?? "Could not add to cart");
             }
           }}
         >
           Add to cart
         </button>
 
-        {added && <p style={{ color: "green", marginTop: 8 }}>Added to cart ✓</p>}
+        {added && (
+          <p style={{ color: "green", marginTop: 8 }}>
+            Added to cart ✓
+          </p>
+        )}
       </div>
     </div>
   );
