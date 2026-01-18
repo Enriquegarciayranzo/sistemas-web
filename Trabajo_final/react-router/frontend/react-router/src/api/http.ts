@@ -7,23 +7,41 @@ export const API_BASE =
 
 if (!API_BASE) throw new Error("VITE_API_BASE_URL is not defined");
 
-export async function apiFetch(path: string, options: RequestInit = {}) {
+export async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
   const token = getToken();
 
+  // No pisar headers del caller
   const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-    ...(options.headers as any),
+    ...(options.headers as Record<string, string>),
   };
 
-  if (token) headers.Authorization = `Bearer ${token}`;
+  // Solo poner Content-Type si hay body y no existe ya
+  if (options.body && !headers["Content-Type"]) {
+    headers["Content-Type"] = "application/json";
+  }
 
-  const res = await fetch(`${API_BASE}${path}`, { ...options, headers });
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const res = await fetch(`${API_BASE}${path}`, {
+    ...options,
+    headers,
+    credentials: "include", // no molesta y ayuda si usas cookies
+  });
 
   if (!res.ok) {
-    const text = await res.text();
+    // Si token inválido -> logout automático y a /login
+    if (res.status === 401) {
+      localStorage.removeItem("token"); 
+      window.location.href = "/login";
+      throw new Error("Unauthorized");
+    }
+
+    const text = await res.text().catch(() => "");
     throw new Error(text || `HTTP ${res.status}`);
   }
 
-  if (res.status === 204) return null;
-  return res.json();
+  // Si no hay contenido
+  if (res.status === 204) return null as unknown as T;
+
+  return (await res.json()) as T;
 }
