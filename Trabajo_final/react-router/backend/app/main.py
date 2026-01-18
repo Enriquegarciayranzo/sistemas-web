@@ -1,15 +1,9 @@
 from contextlib import asynccontextmanager
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.db import create_db_and_tables
-from app.routes import health
-from app.routes import product
-from app.routes import checkout
-from app.routes import orders
-from app.routes import auth
-from app.routes import cart
+from app.routes import health, product, checkout, orders, auth, cart
 
 
 @asynccontextmanager
@@ -17,14 +11,16 @@ async def lifespan(app: FastAPI):
     create_db_and_tables()
     yield
 
+
 app = FastAPI(lifespan=lifespan)
 
-# Configure CORS policy.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://sistemas-web-4ix5.onrender.com",  # backend (no obligatorio, pero ok)
+        "https://sistemas-web-iota.vercel.app",          # <-- CAMBIA ESTO
     ],
     allow_origin_regex=r"^https://.*\.vercel\.app$",
     allow_credentials=True,
@@ -32,7 +28,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register API routers.
 app.include_router(health.router)
 app.include_router(product.router)
 app.include_router(checkout.router)
