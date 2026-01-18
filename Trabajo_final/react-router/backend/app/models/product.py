@@ -7,7 +7,7 @@ class ProductBase(SQLModel):
     description: str
     price: float
     stock: int
-
+    
 
 class Product(ProductBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
