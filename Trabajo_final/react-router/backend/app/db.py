@@ -1,19 +1,15 @@
-from pathlib import Path
+import os
 from sqlmodel import Session, SQLModel, create_engine
 
-# Render Disk montado en /var/data
-DB_DIR = Path("/var/data")
-DB_DIR.mkdir(parents=True, exist_ok=True)
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set")
 
-sqlite_file_path = DB_DIR / "database.db"
-sqlite_url = f"sqlite:///{sqlite_file_path}"
-
-connect_args = {"check_same_thread": False}
-engine = create_engine(sqlite_url, connect_args=connect_args)
+# Render suele dar URL con 'postgresql://'. SQLAlchemy acepta 'postgresql://'
+engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 
 
 def create_db_and_tables():
-    # Registrar modelos
     from app.models.product import Product
     from app.models.order import Order, OrderItem
     from app.models.user import User
