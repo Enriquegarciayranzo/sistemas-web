@@ -13,5 +13,5 @@ export async function fetchProducts(): Promise<Product[]> {
 }
 
 export async function fetchProduct(id: number | string): Promise<Product> {
-  return apiFetch(`/products/${id}`);
+  return apiFetch(`/products/${id}/`);
 }

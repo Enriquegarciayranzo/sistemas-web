@@ -23,7 +23,7 @@ export default function ProductDetail() {
   useEffect(() => {
     if (!productId) return;
 
-    apiFetch<Product>(`/products/${productId}`)
+    apiFetch<Product>(`/products/${productId}/`)
       .then((p) => {
         setProduct(p);
         setQty(1);
