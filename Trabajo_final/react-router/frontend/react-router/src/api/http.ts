@@ -31,8 +31,7 @@ export async function apiFetch<T>(path: string, options: RequestInit = {}): Prom
   if (!res.ok) {
     // Si token inválido -> logout automático y a /login
     if (res.status === 401) {
-      localStorage.removeItem("token"); 
-      window.location.href = "/login";
+      localStorage.removeItem("token");
       throw new Error("Unauthorized");
     }
 
