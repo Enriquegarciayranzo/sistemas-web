@@ -1,6 +1,5 @@
 ***Online Store Web Application***
 1. Project Overview
-
 This project is a full-stack e-commerce web application.
 It simulates a small online store where users can browse products, register, log in, add products to a cart, and place orders.
 
@@ -12,7 +11,6 @@ The goal of this project is to show how a real web application works from start 
 
 2. Main Features
 The application includes the following features:
-
 *User Features*
     User registration
     User login with email and password
@@ -108,7 +106,7 @@ Main tables include:
     This separation avoids mixing local and production data
 
 7. Frontend Architecture and Design Decisions
-Project Structure*
+*Project Structure*
 The frontend is organized into:
     Pages (Home, Login, Register, Cart, Orders)
     API files for backend communication
@@ -125,11 +123,10 @@ The frontend is organized into:
     Protected pages: Cart, Orders
 
 8. Communication Between Frontend and Backend
-
-    The frontend sends HTTP requests using fetch
-    API calls are centralized in helper functions
-    Environment variables are used for backend URLs
-    CORS is properly configured in the backend
+The frontend sends HTTP requests using fetch
+API calls are centralized in helper functions
+Environment variables are used for backend URLs
+CORS is properly configured in the backend
 
 9. Extensions Beyond Minimum Requirements
 This project includes several features beyond the basic requirements:
