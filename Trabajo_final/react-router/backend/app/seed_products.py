@@ -1,9 +1,6 @@
-# backend/seed_products.py
 from sqlmodel import Session, select
-
 from app.db import engine, create_db_and_tables
 from app.models.product import Product
-
 
 PRODUCTS = [
     {
@@ -40,7 +37,6 @@ PRODUCTS = [
     },
 ]
 
-
 def create_product_if_not_exists(session: Session, data: dict) -> Product:
     existing = session.exec(
         select(Product).where(Product.name == data["name"])
@@ -55,7 +51,6 @@ def create_product_if_not_exists(session: Session, data: dict) -> Product:
     session.refresh(product)
     return product
 
-
 def main():
     create_db_and_tables()
 
@@ -64,7 +59,7 @@ def main():
             create_product_if_not_exists(session, product_data)
 
         total = session.exec(select(Product)).all()
-        print(f"✅ Seed completed. Total products in DB: {len(total)}")
+        print(f"Seed completed. Total products in DB: {len(total)}")
 
 
 if __name__ == "__main__":

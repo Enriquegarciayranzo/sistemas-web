@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends
 from sqlmodel import select
-
 from app.dependencies import SessionDep
 from app.models.cart import CartItem
 from app.auth import get_current_user

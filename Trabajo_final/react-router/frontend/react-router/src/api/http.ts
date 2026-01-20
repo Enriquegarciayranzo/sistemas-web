@@ -10,12 +10,10 @@ if (!API_BASE) throw new Error("VITE_API_BASE_URL is not defined");
 export async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
   const token = getToken();
 
-  // No pisar headers del caller
   const headers: Record<string, string> = {
     ...(options.headers as Record<string, string>),
   };
 
-  // Solo poner Content-Type si hay body y no existe ya
   if (options.body && !headers["Content-Type"]) {
     headers["Content-Type"] = "application/json";
   }
@@ -29,7 +27,6 @@ export async function apiFetch<T>(path: string, options: RequestInit = {}): Prom
   });
 
   if (!res.ok) {
-    // Si token inválido -> logout automático y a /login
     if (res.status === 401) {
       localStorage.removeItem("token");
       throw new Error("Unauthorized");
@@ -39,7 +36,6 @@ export async function apiFetch<T>(path: string, options: RequestInit = {}): Prom
     throw new Error(text || `HTTP ${res.status}`);
   }
 
-  // Si no hay contenido
   if (res.status === 204) return null as unknown as T;
 
   return (await res.json()) as T;

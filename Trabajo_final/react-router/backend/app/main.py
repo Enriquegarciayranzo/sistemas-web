@@ -2,18 +2,15 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session, select
-
 from app.db import create_db_and_tables, engine
 from app.models.product import Product
 from app.seed_products import PRODUCTS
 from app.routes import health, product, checkout, orders, auth, cart
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_db_and_tables()
 
-    # 👉 SEED SOLO SI NO HAY PRODUCTOS
     with Session(engine) as session:
         exists = session.exec(select(Product)).first()
         if not exists:
@@ -21,7 +18,6 @@ async def lifespan(app: FastAPI):
             session.commit()
 
     yield
-
 
 app = FastAPI(lifespan=lifespan)
 

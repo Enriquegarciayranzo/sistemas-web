@@ -6,7 +6,6 @@ import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
 
-
 export const routes = [
   {
     path: "/",

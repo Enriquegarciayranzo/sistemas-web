@@ -12,7 +12,6 @@ export default function Orders() {
       .catch((e) => {
         const msg = String(e?.message ?? e);
 
-        // si no estás autenticado -> fuera
         if (msg.includes("401") || msg.toLowerCase().includes("unauthorized")) {
           window.location.href = "/login";
           return;

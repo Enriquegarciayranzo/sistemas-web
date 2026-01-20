@@ -43,7 +43,7 @@ export default function Login() {
               setError("");
               const r = await login(email, password);
               setAuth(r.access_token, email);
-              await loadCart(); // carga carrito del usuario
+              await loadCart();
               nav("/");
             } catch (e: any) {
               setError("Login failed");

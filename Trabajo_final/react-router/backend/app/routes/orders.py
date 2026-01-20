@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import select
-
 from app.dependencies import SessionDep
 from app.auth import get_current_user
 from app.models.user import User
@@ -9,7 +8,6 @@ from app.models.order import Order, OrderItem
 
 router = APIRouter(prefix="/orders", tags=["orders"])
 
-
 @router.get("")
 @router.get("/")
 def list_my_orders(session: SessionDep, user: User = Depends(get_current_user)):
@@ -17,7 +15,6 @@ def list_my_orders(session: SessionDep, user: User = Depends(get_current_user)):
         select(Order).where(Order.user_id == user.id).order_by(Order.id.desc())
     ).all()
 
-    # devolvemos también items
     result = []
     for o in orders:
         items = session.exec(
@@ -43,7 +40,6 @@ def list_my_orders(session: SessionDep, user: User = Depends(get_current_user)):
         )
     return result
 
-
 @router.post("")
 @router.post("/")
 def create_order(payload: dict, session: SessionDep, user: User = Depends(get_current_user)):
@@ -66,7 +62,7 @@ def create_order(payload: dict, session: SessionDep, user: User = Depends(get_cu
         if qty <= 0:
             raise HTTPException(status_code=400, detail="qty must be > 0")
 
-        # (opcional) stock
+        # Stock
         if hasattr(product, "stock") and product.stock < qty:
             raise HTTPException(status_code=400, detail="Not enough stock")
 
@@ -79,7 +75,7 @@ def create_order(payload: dict, session: SessionDep, user: User = Depends(get_cu
         )
         session.add(oi)
 
-        # (opcional) descontar stock
+        # Descontar stock
         if hasattr(product, "stock"):
             product.stock -= qty
             session.add(product)

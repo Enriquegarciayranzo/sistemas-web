@@ -1,15 +1,12 @@
 import logging
 from typing import Annotated
-
 from fastapi import APIRouter, HTTPException, Query
 from sqlmodel import select
-
 from app.models.product import Product, ProductCreate, ProductPublic, ProductUpdate
 from app.dependencies import SessionDep
 
 router = APIRouter()
 logger = logging.getLogger("uvicorn")
-
 
 @router.post("/products/", response_model=ProductPublic)
 def create_product(product: ProductCreate, session: SessionDep):
@@ -18,7 +15,6 @@ def create_product(product: ProductCreate, session: SessionDep):
     session.commit()
     session.refresh(db_product)
     return db_product
-
 
 @router.get("/products/", response_model=list[ProductPublic])
 def read_products(
@@ -30,14 +26,12 @@ def read_products(
     logger.info(f"Retrieved products: {products}")
     return products
 
-
 @router.get("/products/{product_id}", response_model=ProductPublic)
 def read_product(product_id: int, session: SessionDep):
     product = session.get(Product, product_id)
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
     return product
-
 
 @router.patch("/products/{product_id}", response_model=ProductPublic)
 def update_product(product_id: int, product: ProductUpdate, session: SessionDep):
@@ -50,7 +44,6 @@ def update_product(product_id: int, product: ProductUpdate, session: SessionDep)
     session.commit()
     session.refresh(product_db)
     return product_db
-
 
 @router.delete("/products/{product_id}")
 def delete_product(product_id: int, session: SessionDep):

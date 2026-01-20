@@ -7,7 +7,6 @@ export type OrderItem = { product_id: number; name: string; price: number; qty: 
 export type Order = { id: number; total: number; items: OrderItem[] };
 
 export async function createOrder(data: OrderCreate) {
-  // devuelve { ok: true, order_id: number }
   return apiFetch("/orders", {
     method: "POST",
     body: JSON.stringify(data),

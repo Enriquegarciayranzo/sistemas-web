@@ -23,7 +23,7 @@ export async function addCartItem(productId: number, qty: number) {
   });
 }
 
-// PUT /cart  (usamos POST porque tu backend hace upsert)
+// PUT /cart 
 export async function updateCartItem(productId: number, qty: number) {
   return apiFetch("/cart", {
     method: "POST",
@@ -41,7 +41,7 @@ export async function clearCartApi() {
   });
 }
 
-// DELETE item concreto (opcional)
+// DELETE item concreto 
 export async function removeCartItem(productId: number) {
   return apiFetch("/cart", {
     method: "POST",

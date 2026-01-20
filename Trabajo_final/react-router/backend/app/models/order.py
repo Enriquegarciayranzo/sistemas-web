@@ -1,8 +1,6 @@
 from datetime import datetime
 from typing import Optional
-
 from sqlmodel import SQLModel, Field, Relationship
-
 
 class Order(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
