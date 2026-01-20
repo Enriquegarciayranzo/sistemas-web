@@ -1,5 +1,11 @@
-// src/api/auth.ts
-import { API_BASE } from "./http";
+import { apiFetch, API_BASE } from "./http";
+
+export function register(email: string, password: string) {
+  return apiFetch("/auth/register", {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+  });
+}
 
 export async function login(email: string, password: string) {
   const body = new URLSearchParams();
@@ -10,6 +16,7 @@ export async function login(email: string, password: string) {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body,
+    credentials: "omit",
   });
 
   if (!res.ok) {
@@ -17,5 +24,5 @@ export async function login(email: string, password: string) {
     throw new Error(txt || `HTTP ${res.status}`);
   }
 
-  return res.json();
+  return (await res.json()) as { access_token: string; token_type: string };
 }
