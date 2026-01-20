@@ -176,3 +176,15 @@ between development and production environments. These features improve the usab
 Overall, this project has been a very useful learning experience. It combines theory and practice and shows how a complete web application is
 built from start to finish. The final result is a functional, well-structured, and realistic e-commerce application that meets the objectives
 of the assignment.
+
+12. GITHUB
+https://github.com/Enriquegarciayranzo/sistemas-web/tree/main/Trabajo_final/react-router
+
+13. RENDER
+https://dashboard.render.com/web/srv-d5mku6dactks73buftqg
+
+14. VERCEL
+https://vercel.com/enrique-s-projects-a1095248/sistemas-web-fqgt
+
+15. WEB PAGE
+https://sistemas-web-fqgt.vercel.app/
